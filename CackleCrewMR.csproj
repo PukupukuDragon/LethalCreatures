@@ -1,0 +1,102 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<!-- Project Information -->
+	<PropertyGroup>
+		<AssemblyName>CackleCrewMR</AssemblyName>
+		<Product>CackleCrewMR</Product>
+		<Version>1.0.0</Version>
+	</PropertyGroup>
+
+	<!-- Project Properties -->
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<RootNamespace>CackleCrewMR</RootNamespace>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+		<LethalCompanyPath>C:\Program Files (x86)\Steam\steamapps\common\Lethal Company - Modded</LethalCompanyPath>
+	</PropertyGroup>
+
+	<!-- Embedded Resources -->
+  	<ItemGroup>
+    	<EmbeddedResource Include="lecreature" />
+    	<EmbeddedResource Include="lecustomization" />
+  	</ItemGroup>
+
+	<!-- Disable Publicizer Warnings -->
+	<PropertyGroup>
+		<NoWarn>$(NoWarn);CS0436</NoWarn>
+	</PropertyGroup>
+
+	<!-- Set NuGet Sources -->
+	<PropertyGroup>
+		<RestoreAdditionalProjectSources>https://api.nuget.org/v3/index.json;https://nuget.bepinex.dev/v3/index.json</RestoreAdditionalProjectSources>
+	</PropertyGroup>
+
+	<!-- Embed Debug Symbols for Easier Debugging -->
+	<PropertyGroup>
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>embedded</DebugType>
+		<PathMap>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)'))=./</PathMap>
+	</PropertyGroup>
+
+	<!-- Primary Package References -->
+	<ItemGroup>
+		<PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all"/>
+		<PackageReference Include="BepInEx.Core" Version="5.*" PrivateAssets="all"/>
+		<PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" PrivateAssets="all"/>
+		<PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.1" PrivateAssets="all" />
+		<PackageReference Include="LethalCompany.GameLibs.Steam" Version="*-*" PrivateAssets="all"/>
+		<PackageReference Include="UnityEngine.Modules" Version="2022.3.9" IncludeAssets="compile" PrivateAssets="all"/>
+	</ItemGroup>
+
+	<!-- Additional Game References -->
+	<ItemGroup>
+		<Reference Include="Assembly-CSharp" Publicize="true">
+			<HintPath>$(LethalCompanyPath)\Lethal Company_Data\Managed\Assembly-CSharp.dll</HintPath>
+		</Reference>
+		<Reference Include="ModelReplacementAPI">
+			<HintPath>$(LethalCompanyPath)\BepInEx\plugins\ModelReplacementAPI.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.InputSystem">
+			<HintPath>$(LethalCompanyPath)\Lethal Company_Data\Managed\Unity.InputSystem.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.InputSystem.ForUI">
+			<HintPath>$(LethalCompanyPath)\Lethal Company_Data\Managed\Unity.InputSystem.ForUI.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Netcode.Runtime">
+			<HintPath>$(LethalCompanyPath)\Lethal Company_Data\Managed\Unity.Netcode.Runtime.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.TextMeshPro">
+			<HintPath>$(LethalCompanyPath)\Lethal Company_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine">
+			<HintPath>$(LethalCompanyPath)\Lethal Company_Data\Managed\UnityEngine.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UI">
+			<HintPath>$(LethalCompanyPath)\Lethal Company_Data\Managed\UnityEngine.UI.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+    <!-- Copy ThunderStore Files -->
+    <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
+		<!-- Copy to build directory. -->
+        <Copy SourceFiles="$(OutDir)\CackleCrewMR.dll" DestinationFolder="build\BepInEx\plugins" />
+        <Copy SourceFiles="assets\CHANGELOG.md" DestinationFolder="build" />
+        <Copy SourceFiles="assets\icon.png" DestinationFolder="build" />
+        <Copy SourceFiles="assets\manifest.json" DestinationFolder="build" />
+        <Copy SourceFiles="assets\moresuits\CAGreen.png" DestinationFolder="build\BepInEx\plugins\moresuits" />
+        <Copy SourceFiles="assets\moresuits\CAHaz.png" DestinationFolder="build\BepInEx\plugins\moresuits" />
+        <Copy SourceFiles="assets\moresuits\CAPajam.png" DestinationFolder="build\BepInEx\plugins\moresuits" />
+        <Copy SourceFiles="assets\moresuits\CAPurp.png" DestinationFolder="build\BepInEx\plugins\moresuits" />
+        <Copy SourceFiles="assets\moresuits\CARed.png" DestinationFolder="build\BepInEx\plugins\moresuits" />
+        <Copy SourceFiles="assets\README.md" DestinationFolder="build" />
+
+		<!-- Copy to game installation. -->
+        <Copy SourceFiles="$(OutDir)\CackleCrewMR.dll" DestinationFolder="$(LethalCompanyPath)\BepInEx\plugins" />
+    </Target>
+
+	<ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all"/>
+	</ItemGroup>
+</Project>

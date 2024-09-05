@@ -3,5 +3,20 @@ Changes the player to a custom model
 
 ![](https://i.imgur.com/vqXMhWe.png)
 
-Original code by Zoomy  
-Thanks to Bizzle, Spooky, NepuShiro, 753, Bobbie, and Hyst for all their help sprucing up the code
+## ModelAPI code by Bunya [Find more info here](https://github.com/BunyaPineTree/LethalCompany_ModelReplacementAPI)
+
+Current Features
+* Multiple Outfits
+* Customization
+* Bone Physics
+* Ragdolls
+* More Suits compatible
+
+ToDo
+* First person arms
+
+Bugs
+* Item offsets are a lil hit and miss
+
+
+## Credit to ScottyFoxArt for the customizaton system
