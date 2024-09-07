@@ -90,7 +90,7 @@
         <Copy SourceFiles="assets\moresuits\CAPajam.png" DestinationFolder="build\BepInEx\plugins\moresuits" />
         <Copy SourceFiles="assets\moresuits\CAPurp.png" DestinationFolder="build\BepInEx\plugins\moresuits" />
         <Copy SourceFiles="assets\moresuits\CARed.png" DestinationFolder="build\BepInEx\plugins\moresuits" />
-        <Copy SourceFiles="assets\README.md" DestinationFolder="build" />
+        <Copy SourceFiles="README.md" DestinationFolder="build" />
 
 		<!-- Copy to game installation. -->
         <Copy SourceFiles="$(OutDir)\CackleCrewMR.dll" DestinationFolder="$(LethalCompanyPath)\BepInEx\plugins" />
