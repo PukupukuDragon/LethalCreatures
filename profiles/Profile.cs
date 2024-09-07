@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CreatureModelReplacement;
 using UnityEngine;
 
 namespace CackleCrew.ThisIsMagical
@@ -59,8 +60,8 @@ namespace CackleCrew.ThisIsMagical
         {
             if (!TryGetProfile(reference, out var referenceProfile))
             {
-                Debug.LogWarning($"Profile.CloneProfile does not contain the reference profile {reference}");
-                Debug.LogWarning($"Profile.CloneProfile could not clone to profile {profileName}");
+                Plugin.logger.LogWarning($"Profile.CloneProfile does not contain the reference profile {reference}");
+                Plugin.logger.LogWarning($"Profile.CloneProfile could not clone to profile {profileName}");
                 return null;
             }
             if (!TryGetProfile(profileName, out var profile))
@@ -79,14 +80,14 @@ namespace CackleCrew.ThisIsMagical
         {
             if (!TryGetProfile(reference, out var referenceProfile))
             {
-                Debug.LogWarning($"Profile.ReflectProfile does not contain the reference profile {reference}");
-                Debug.LogWarning($"Profile.ReflectProfile could not reflect to profile {profileName}");
+                Plugin.logger.LogWarning($"Profile.ReflectProfile does not contain the reference profile {reference}");
+                Plugin.logger.LogWarning($"Profile.ReflectProfile could not reflect to profile {profileName}");
                 return null;
             }
             if (!TryGetProfile(profileName, out var profile))
             {
-                Debug.LogWarning($"Profile.ReflectProfile does not contain the profile {reference}");
-                Debug.LogWarning($"Profile.ReflectProfile could not reflect to profile {profileName}");
+                Plugin.logger.LogWarning($"Profile.ReflectProfile does not contain the profile {reference}");
+                Plugin.logger.LogWarning($"Profile.ReflectProfile could not reflect to profile {profileName}");
                 return null;
             }
             foreach (var pair in profile.Data)
@@ -336,15 +337,15 @@ namespace CackleCrew.ThisIsMagical
             //by positioning it at the end of the profileData.
             if (validate && profileData.Length != expectedSize)
             {
-                Debug.LogWarning("Profile data provided does not match expected size--");
-                Debug.LogWarning("...Ignoring");
+                Plugin.logger.LogWarning("Profile data provided does not match expected size--");
+                Plugin.logger.LogWarning("...Ignoring");
                 return;
             }
             //Checksum Validation, Data may be incorrect if checksum token is incorrect.
             if (validate && !ValidateChecksum(profileData))
             {
-                Debug.LogWarning("Profile data does not match checksum--");
-                Debug.LogWarning("data may be incorrect... Ignoring");
+                Plugin.logger.LogWarning("Profile data does not match checksum--");
+                Plugin.logger.LogWarning("data may be incorrect... Ignoring");
                 return;
             }
             //Prepare to read profile data.

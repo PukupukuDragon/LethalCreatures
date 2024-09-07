@@ -1,4 +1,5 @@
-﻿using GameNetcodeStuff;
+﻿using CreatureModelReplacement;
+using GameNetcodeStuff;
 using HarmonyLib;
 using System;
 using System.Collections.Generic;
@@ -100,7 +101,7 @@ namespace CackleCrew.ThisIsMagical
             }
             else
             {
-                Debug.LogWarning($"Suit ID {suitID} is not valid.");
+                Plugin.logger.LogWarning($"Suit ID {suitID} is not valid.");
             }
             UnlockableSuit suit = null;
             foreach (var unlockable in StartOfRound.Instance.SpawnedShipUnlockables)
@@ -128,7 +129,7 @@ namespace CackleCrew.ThisIsMagical
             }
             else
             {
-                Debug.LogWarning($"Could Not Find UnlockableSuit!");
+                Plugin.logger.LogWarning($"Could Not Find UnlockableSuit!");
             }
         }
         public static void SampleSuitColors(Texture2D suitTexture, out Color bootColor, out Color suitColor, out Color clothColor, out Color tankColor)
@@ -148,7 +149,7 @@ namespace CackleCrew.ThisIsMagical
             }
             catch (Exception)
             {
-                Debug.LogWarning($"Texture \"{suitTexture.name}\" is not Read/Writtable colors could not be extracted.");
+                Plugin.logger.LogWarning($"Texture \"{suitTexture.name}\" is not Read/Writtable colors could not be extracted.");
             }
         }
     }

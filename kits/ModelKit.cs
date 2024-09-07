@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CreatureModelReplacement;
 using UnityEngine;
 
 namespace CackleCrew.ThisIsMagical
@@ -12,14 +13,14 @@ namespace CackleCrew.ThisIsMagical
         {
             if (registeredModels.Count == 0)
             {
-                Debug.LogError("NO MODELS REGISTERED!!!");
+                Plugin.logger.LogError("NO MODELS REGISTERED!!!");
                 return null;
             }
             if (string.IsNullOrEmpty(modelName))
                 modelName = registeredModels.Keys.First();
             if (!registeredModels.TryGetValue(modelName, out var model))
             {
-                Debug.LogWarning($"{modelName} Model Doesn't Exist.");
+                Plugin.logger.LogWarning($"{modelName} Model Doesn't Exist.");
             }
             if (model == null)
             {

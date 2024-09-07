@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 using CackleCrewMR.Helpers;
+using CreatureModelReplacement;
 
 namespace CackleCrew.ThisIsMagical
 {
@@ -94,8 +95,8 @@ namespace CackleCrew.ThisIsMagical
             }
             catch (Exception e)
             {
-                Debug.LogError("Provided tokenString could not be Deserialized or Read.");
-                Debug.LogError(e);
+                Plugin.logger.LogError("Provided tokenString could not be Deserialized or Read.");
+                Plugin.logger.LogError(e);
             }
         }
         private static string DecompressString(string input)

@@ -5,6 +5,7 @@ using System.Reflection;
 using ModelReplacement;
 using BepInEx.Configuration;
 using CackleCrew.ThisIsMagical;
+using BepInEx.Logging;
 
 //using System.Numerics;
 
@@ -18,6 +19,7 @@ namespace CreatureModelReplacement
 
     public class Plugin : BaseUnityPlugin
     {
+        internal new static ManualLogSource logger;
         public static ConfigFile config;
 
         // Universal config options  
@@ -25,18 +27,13 @@ namespace CreatureModelReplacement
         public static ConfigEntry<bool> enableModelAsDefault { get; private set; }
         public static ConfigEntry<string> suitNamesToEnableModel { get; private set; }
 
-
-        private static void InitConfig()
+        private void Awake()
         {
+            logger = base.Logger; 
+            config = base.Config;
             enableModelForAllSuits = config.Bind<bool>("Suits to Replace Settings", "Enable Model for all Suits", false, "Enable to replace every suit with Model. Set to false to specify suits");
             enableModelAsDefault = config.Bind<bool>("Suits to Replace Settings", "Enable Model as default", false, "Enable to replace every suit that hasn't been otherwise registered with Model.");
             suitNamesToEnableModel = config.Bind<string>("Suits to Replace Settings", "Suits to enable Model for", "Default,Orange suit,Green suit,Pajama suit,Hazard suit,Purple Suit", "For use with Moresuits, replace list with: CARed,CAGreen,CAHaz,CAPajam,CAPurp");
-
-        }
-        private void Awake()
-        {
-            config = base.Config;
-            InitConfig();
             Assets.PopulateAssets();
 
             // Plugin startup logic

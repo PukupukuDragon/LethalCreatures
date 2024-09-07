@@ -1,22 +1,25 @@
-# Lethal Creatures
-Changes the player to a custom model
+# Cackle Crew
 
-![](https://i.imgur.com/vqXMhWe.png)
+**Watch you and your friends scurry about as little creatures!**
+![Creatures on a lovely date](https://i.imgur.com/vqXMhWe.png)
 
-## ModelAPI code by Bunya [Find more info here](https://github.com/BunyaPineTree/LethalCompany_ModelReplacementAPI)
+# Many creatures to choose from!
+![Creature player model](https://i.imgur.com/35QAttP.png)
+![Navigator player model](https://i.imgur.com/2dih3EE.png)
+![Brawler player model](https://i.imgur.com/imIfhXz.png)
 
-Current Features
-* Multiple Outfits
-* Customization
-* Bone Physics
-* Ragdolls
-* More Suits compatible
+## Features
+* Customizable playable creature!
+* MoreSuits compatible, though no custom suits for themselves yet.
+* Ragdolls and bone physics!
 
-ToDo
-* First person arms
+## Quirks
+* Position of some first person items are a bit off.
 
-Bugs
-* Item offsets are a lil hit and miss
+### Credits
+* [BunyaPineTree](https://thunderstore.io/c/lethal-company/p/BunyaPineTree/) - Creation of the **ModelReplacementAPI**
+* [ThatDarnHyena](https://twitter.com/ThatDarnHyena) - Original mod and hyena models.
+* [ScottyFoxArt](https://twitter.com/ScottyFoxArt) - Customization system and custom shader.
 
-
-## Credit to ScottyFoxArt for the customizaton system
+**For those that prefer the more vanilla version:**
+* [Classic Lethal Creatures](https://thunderstore.io/c/lethal-company/p/DarnHyena/LethalCreatureClassic/)  

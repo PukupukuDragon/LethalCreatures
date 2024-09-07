@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using CreatureModelReplacement;
+using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -23,12 +24,12 @@ namespace CackleCrew.ThisIsMagical
         {
             if (chatMessage.Length > (50 - tag.Length))
             {
-                Debug.LogError("CHAT MESSAGE BEING SENT IS LONGER THAN 50 CHARACTERS!!!");
-                Debug.LogError("AND WILL PROBABLY NOT BE RECEIVED BY THE OTHER CLIENTS!!!");
-                Debug.LogError(tag + chatMessage);
+                Plugin.logger.LogError("CHAT MESSAGE BEING SENT IS LONGER THAN 50 CHARACTERS!!!");
+                Plugin.logger.LogError("AND WILL PROBABLY NOT BE RECEIVED BY THE OTHER CLIENTS!!!");
+                Plugin.logger.LogError(tag + chatMessage);
             }
-            Debug.LogWarning("== Ignore the Following Error ==");
-            Debug.LogWarning("== IndexOutOfRangeException : AddPlayerChatMessageClientRpc ==");
+            Plugin.logger.LogWarning("== Ignore the Following Error ==");
+            Plugin.logger.LogWarning("== IndexOutOfRangeException : AddPlayerChatMessageClientRpc ==");
             try
             {
                 var data = new object[] { tag + chatMessage, DATAKIT_ID };

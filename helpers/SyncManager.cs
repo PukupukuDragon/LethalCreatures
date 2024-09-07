@@ -1,4 +1,5 @@
 ﻿using CackleCrewMR.Helpers;
+using CreatureModelReplacement;
 using GameNetcodeStuff;
 using HarmonyLib;
 using System.Collections.Generic;
@@ -37,24 +38,24 @@ namespace CackleCrew.ThisIsMagical
             int seperator_index = chatData.IndexOf('=');
             if (seperator_index == -1)
             {
-                Debug.LogWarning("Chat Data Received is Wrong...!");
-                Debug.LogWarning("Ignoring Chat Data...");
+                Plugin.logger.LogWarning("Chat Data Received is Wrong...!");
+                Plugin.logger.LogWarning("Ignoring Chat Data...");
                 return;
             }
             if (!ulong.TryParse(chatData.Substring(0, seperator_index), out ulong ownerClientID))
             {
-                Debug.LogWarning("Unable to Parge ID from chat data...!");
+                Plugin.logger.LogWarning("Unable to Parge ID from chat data...!");
                 return;
             }
             if (ProfileHelper.IsLocalPlayer(ownerClientID))
             {
-                //Debug.LogWarning("Config Is Local, Ignoring...");
+                Plugin.logger.LogWarning("Config Is Local, Ignoring...");
                 return;
             }
             Profile profile = ProfileHelper.TouchPlayerProfile(ownerClientID, out var player);
             if (profile == null)
             {
-                Debug.LogWarning("Config Profile Does not exist!");
+                Plugin.logger.LogWarning("Config Profile Does not exist!");
                 return;
             }
             var data = chatData.Substring(++seperator_index);
